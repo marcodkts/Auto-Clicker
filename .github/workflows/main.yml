@@ -49,3 +49,4 @@ jobs:
         with:
           file: "/home/runner/work/Auto-Clicker/Auto-Clicker/dist/clicker"
           overwrite: true
+          draft: false
