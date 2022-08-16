@@ -24,11 +24,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Check variable
-        run:
-          echo "${{ github.event.pull_request.title }}"
-          echo "teste"
-
       # Runs a single command using the runners shell
       - name: Set up Python
         uses: actions/setup-python@v2
