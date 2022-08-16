@@ -16,7 +16,7 @@ For this version, you can simplaly run [clicker.py](./clicker.py) and kill the t
 Don't forget to install the requirements, just follow the [instrunctions](./INSTALL.md).
 
 ### Next features
-I pretend to make a window for the program and make it a .exe file.
+I pretend to make a window for the program.
 
 If your have any suggestion or comment, please let me know.
 
