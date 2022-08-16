@@ -23,7 +23,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Check variable
+      - name: Check variables
         run: echo ${{ github.event.push_request.title }}
 
       # Runs a single command using the runners shell
