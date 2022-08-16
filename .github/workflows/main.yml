@@ -6,7 +6,7 @@ name: Create Executable file
 on:
   # Triggers the workflow on push request events but only for the "main" branch
   pull_request:
-    types: [ "auto_merge_enabled" ]
+    types: [ "closed" ]
     branches: [ "main" ]
 
       # Allows you to run this workflow manually from the Actions tab
@@ -16,6 +16,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
