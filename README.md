@@ -14,3 +14,10 @@ You can change it by your own in the [clicker.py](./clicker.py#L6).
 ### Running the program
 For this version, you can simplaly run [clicker.py](./clicker.py) and kill the task after get tired of using it.
 Don't forget to install the requirements, just follow the [instrunctions](./INSTALL.md)
+
+### Next features
+I pretend to make a window for the program and make it a .exe file.
+
+If your have any suggestion or comment, please let me know.
+
+Enjoy it.
