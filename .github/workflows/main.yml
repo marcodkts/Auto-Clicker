@@ -16,8 +16,9 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    if: false
+    #if: github.event.pull_request.merged == true
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
