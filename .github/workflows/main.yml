@@ -44,5 +44,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           file: "dist/*.md"
-          tags: true
-          draft: true
+          overwrite: true
