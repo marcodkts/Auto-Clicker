@@ -47,5 +47,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "dist/*.md"
+          file: "/home/runner/work/Auto-Clicker/Auto-Clicker/dist/clicker"
           overwrite: true
