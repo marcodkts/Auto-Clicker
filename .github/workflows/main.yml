@@ -22,8 +22,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Check variables 
-        run: echo ${{ github.event.pull_request.title }}
+      - name: Check coverage tolerance
+        if: github.event.review.state == 'approved'
+        uses: actions/github-script@v3
+        with:
+          script: |
+              core.setFailed('Pull request not aproved')
 
       # Runs a single command using the runners shell
       - name: Set up Python
