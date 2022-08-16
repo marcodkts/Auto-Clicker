@@ -25,7 +25,8 @@ jobs:
       - name: Check coverage tolerance
         if: github.event.review.state == 'approved'
         uses: actions/github-script@v3
-        with:
+        with:        
+          run: echo ${{ github.event.pull_request.title }}
           script: |
               core.setFailed('Pull request not aproved')
 
