@@ -17,8 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     runs-on: ubuntu-latest
-    if: false
-    #if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,7 +25,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Check variable
-        run: echo ${{ github.event.push_request.title }}
+        run:
+          echo ${{ github.event.push_request.title }}
+          echo "teste"
 
       # Runs a single command using the runners shell
       - name: Set up Python
