@@ -26,7 +26,7 @@ jobs:
 
       - name: Check variable
         run:
-          echo ${{ github.event.push_request.title }}
+          echo "${{ github.event.push_request.title }}"
           echo "teste"
 
       # Runs a single command using the runners shell
