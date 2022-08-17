@@ -3,12 +3,13 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit
+from clicker import AutoClicker
 from tools import alreadyRunning
 
 alreadyRunning()
 
 version = "2.0.0"
-
+clicker = AutoClicker()
 
 class MyWindow(QMainWindow):
     def __init__(self):
@@ -57,6 +58,7 @@ class MyWindow(QMainWindow):
 
     def runClicker(self):
         self.b2.setText("Stop Auto Clicker")
+        # clicker.startClicker(self.textbox.text())
         self.update()
 
     def update(self):

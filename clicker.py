@@ -1,37 +1,34 @@
-import time
-import threading
-from pynput.mouse import Controller, Button
-from pynput.keyboard import Listener, KeyCode
-from tools import alreadyRunning
+class AutoClicker:
+    import time
+    import threading
+    from pynput.mouse import Controller, Button
+    from pynput.keyboard import Listener, KeyCode
 
-alreadyRunning()
+    def __init__(self):
+        self.clicking = False
+        self.toggleKey = None
+        self.mouse = self.Controller()
 
-while True:
-    TOGGLE_KEY = KeyCode(char=input("Enter a Toggle Key:\n"))
-    if input(f"TOGGLE_KEY = {TOGGLE_KEY}, ok? (y/n)\n").lower() == "y":
-        break
+    def clicker(self):
+        while True:
+            if self.clicking:
+                self.mouse.click(self.Button.left, 1)
+            self.time.sleep(0.0001)
 
-print(f"Press {TOGGLE_KEY} to start.")
-clicking = False
-mouse = Controller()
+    def toggleEvent(self, key):
+        if key == self.toggleKey:
+            self.clicking = not self.clicking
+            print("Running..." if self.clicking else "Stoped    \r", end="\r")
 
+    def startListener(self):
+        with self.Listener(on_press=self.toggleEvent) as self.listener:
+            self.listener.join()
 
-def clicker():
-    while True:
-        if clicking:
-            mouse.click(Button.left, 1)
-        time.sleep(0.0001)
+    def startThread(self):
+        click_thread = self.threading.Thread(target=self.clicker)
+        click_thread.start()
 
-
-def toggle_event(key):
-    if key == TOGGLE_KEY:
-        global clicking
-        clicking = not clicking
-        print("Running..." if clicking else "Stoped    \r", end = "\r")
-
-
-click_thread = threading.Thread(target=clicker)
-click_thread.start()
-
-with Listener(on_press=toggle_event) as listener:
-    listener.join()
+    def startClicker(self, toggleKey):
+        self.toggleKey = self.KeyCode(char=toggleKey)
+        self.startThread()
+        self.startListener()
