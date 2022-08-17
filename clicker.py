@@ -14,9 +14,10 @@ if process_list.count(PROCNAME) > 1:
 
 while True:
     TOGGLE_KEY = KeyCode(char=input("Enter a Toggle Key:\n"))
-    if input(f"TOGGLE_KEY = {TOGGLE_KEY}, ok? (y/n)").lower() == "y":
+    if input(f"TOGGLE_KEY = {TOGGLE_KEY}, ok? (y/n)\n").lower() == "y":
         break
 
+print(f"Press {TOGGLE_KEY} to start.")
 clicking = False
 mouse = Controller()
 
@@ -32,6 +33,7 @@ def toggle_event(key):
     if key == TOGGLE_KEY:
         global clicking
         clicking = not clicking
+        print("Running..." if clicking else "Stoped    \r", end = "\r")
 
 
 click_thread = threading.Thread(target=clicker)
