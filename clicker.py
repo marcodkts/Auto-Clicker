@@ -25,10 +25,11 @@ class AutoClicker:
             self.listener.join()
 
     def startThread(self):
-        click_thread = self.threading.Thread(target=self.clicker)
-        click_thread.start()
+            click_thread = self.threading.Thread(target=self.clicker)
+            click_thread.start()
+            listener_thread = self.threading.Thread(target=self.startListener)
+            listener_thread.start()
 
     def startClicker(self, toggleKey):
         self.toggleKey = self.KeyCode(char=toggleKey)
         self.startThread()
-        self.startListener()
