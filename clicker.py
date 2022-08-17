@@ -25,9 +25,9 @@ class AutoClicker:
             self.listener.join()
 
     def startThread(self):
-            click_thread = self.threading.Thread(target=self.clicker)
+            click_thread = self.threading.Thread(target=self.clicker, daemon=True)
             click_thread.start()
-            listener_thread = self.threading.Thread(target=self.startListener)
+            listener_thread = self.threading.Thread(target=self.startListener, daemon=True)
             listener_thread.start()
 
     def startClicker(self, toggleKey):
