@@ -12,32 +12,30 @@ alreadyRunning()
 version = "2.0.0"
 clicker = AutoClicker()
 
+class ExtendedFormUI(Ui_form):
+    def addConnectors(self):
+        self.BtnStart.clicked["bool"].connect(self.startClicker)
+        self.BtnSave.clicked["bool"].connect(self.saveClicker)
 
-def addConnectors(self):
-    self.BtnStart.clicked["bool"].connect(self.startClicker)
+    def startClicker(self, isPressed: bool) -> None:
+        self.BtnStart.setText("Stop" if isPressed else "Start")
+        if isPressed:
+            clicker.startClicker(self.LneToggleKey.text())
+        else:
+            clicker.stopClicker()
+
+    def saveClicker(self, isPressed: bool) -> None:
+        self.BtnSave.setText("Edit" if isPressed else "Save")
 
 
-Ui_form.addConnectors = addConnectors
-
-def startClicker(self, isPressed: bool) -> None:
-    clicker.startClicker(self.LneToggleKey.text())
-    self.BtnStart.setText("Stop" if isPressed else "Start")
-
-Ui_form.startClicker = startClicker
-
-def ExecAllExtFunctions(self):
-    self.addConnectors()
-
-
-Ui_form.ExecAllExtFunctions = ExecAllExtFunctions
 
 if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
     form = QtWidgets.QWidget()
-    ui = Ui_form()
+    ui = ExtendedFormUI()
     ui.setupUi(form)
     form.show()
-    ui.ExecAllExtFunctions()
+    ui.addConnectors()
     sys.exit(app.exec_())
