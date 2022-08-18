@@ -19,6 +19,10 @@ class Ui_form(object):
         form.setMinimumSize(QtCore.QSize(300, 125))
         form.setMaximumSize(QtCore.QSize(300, 125))
         form.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("app.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        form.setWindowIcon(icon)
+        form.setAutoFillBackground(False)
         form.setStyleSheet("")
         self.BtnSave = QtWidgets.QPushButton(form)
         self.BtnSave.setGeometry(QtCore.QRect(10, 60, 131, 28))
@@ -56,18 +60,16 @@ class Ui_form(object):
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         self.LblFooter.setFont(font)
-        self.LblFooter.setAlignment(
-            QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter
-        )
+        self.LblFooter.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.LblFooter.setObjectName("LblFooter")
         self.horizontalLayout.addWidget(self.LblFooter)
         self.horizontalLayout.setStretch(0, 1)
         self.horizontalLayout.setStretch(1, 3)
 
         self.retranslateUi(form)
-        self.BtnSave.clicked["bool"].connect(self.BtnStart.setEnabled)  # type: ignore
-        self.BtnStart.clicked["bool"].connect(self.BtnSave.setDisabled)  # type: ignore
-        self.BtnSave.clicked["bool"].connect(self.LneToggleKey.setDisabled)  # type: ignore
+        self.BtnSave.clicked['bool'].connect(self.BtnStart.setEnabled) # type: ignore
+        self.BtnStart.clicked['bool'].connect(self.BtnSave.setDisabled) # type: ignore
+        self.BtnSave.clicked['bool'].connect(self.LneToggleKey.setDisabled) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(form)
 
     def retranslateUi(self, form):
@@ -82,7 +84,6 @@ class Ui_form(object):
 
 if __name__ == "__main__":
     import sys
-
     app = QtWidgets.QApplication(sys.argv)
     form = QtWidgets.QWidget()
     ui = Ui_form()

@@ -35,14 +35,16 @@ jobs:
 
       - name: Run pyinstaller
         run: |
-          pyinstaller --clean -F -n "${{ github.event.repository.name }}" main.pyw
+          pyinstaller --clean --icon=app.ico -F -n "${{ github.event.repository.name }}" main.pyw
+          copy app.ico dist/
+          Compress-Archive dist/* ${{ github.event.repository.name }}.zip
 
       - name: Upload file
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "dist/*"
+          file: "${{ github.event.repository.name }}.zip"
           overwrite: true
           draft: false
           tag_name: ${{ github.event.pull_request.title }}
