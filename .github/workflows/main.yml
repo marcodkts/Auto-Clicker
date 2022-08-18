@@ -34,14 +34,14 @@ jobs:
 
       - name: Run pyinstaller
         run: |
-          pyinstaller -F -n "Auto Clicker" main.py
+          pyinstaller -F -n "AutoClicker" main.py
 
       - name: Upload file
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "/home/runner/work/Auto-Clicker/Auto-Clicker/dist/Auto Clicker"
+          file: "/home/runner/work/Auto-Clicker/Auto-Clicker/dist/AutoClicker"
           overwrite: true
           draft: false
           tag_name: ${{ github.event.pull_request.title }}
