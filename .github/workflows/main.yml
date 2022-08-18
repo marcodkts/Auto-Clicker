@@ -9,9 +9,6 @@ on:
     types: [ "closed" ]
     branches: [ "main" ]
 
-      # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -37,14 +34,14 @@ jobs:
 
       - name: Run pyinstaller
         run: |
-          pyinstaller -F -n "Auto Clicker" clicker.py
+          pyinstaller -F -n "Auto Clicker" main.py
 
       - name: Upload file
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "/home/runner/work/Auto-Clicker/Auto-Clicker/dist/clicker"
+          file: "/home/runner/work/Auto-Clicker/Auto-Clicker/dist/Auto Clicker"
           overwrite: true
           draft: false
           tag_name: ${{ github.event.pull_request.title }}
