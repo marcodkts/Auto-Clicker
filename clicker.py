@@ -10,23 +10,19 @@ class AutoClicker:
         self.mouse = self.Controller()
         self.running = True
 
-
     def clicker(self):
         while self.running:
             if self.clicking:
                 self.mouse.click(self.Button.left, 1)
             self.time.sleep(0.0001)
-        print("Clicker Thread Stoped")
 
     def toggleEvent(self, key):
         if key == self.toggleKey:
             self.clicking = not self.clicking
-            print("Running..." if self.clicking else "Stoped    \r", end="\r")
 
     def startListener(self):
         with self.Listener(on_press=self.toggleEvent) as self.listener:
             self.listener.join()
-        print("Listener Thread Stoped")
 
     def startThreads(self):
         click_thread = self.Thread(
@@ -51,4 +47,3 @@ class AutoClicker:
         self.clicking = False
         self.running = False
         self.listener.stop()
-    
