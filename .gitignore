@@ -130,3 +130,6 @@ dmypy.json
 
 # SonarLint
 .idea
+
+# Others
+*.zip

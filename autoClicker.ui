@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>WolfGear.tech</author>
  <class>form</class>
  <widget class="QWidget" name="form">
   <property name="windowModality">
@@ -30,6 +31,13 @@
   </property>
   <property name="windowTitle">
    <string>Auto Clicker</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>app.ico</normaloff>app.ico</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
