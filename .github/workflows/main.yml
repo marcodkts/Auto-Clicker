@@ -34,7 +34,7 @@ jobs:
 
       - name: Run pyinstaller
         run: |
-          pyinstaller -F -n "AutoClicker" main.py
+          pyinstaller -F -n "AutoClicker" main.pyw
 
       - name: Upload file
         uses: xresloader/upload-to-github-release@v1
