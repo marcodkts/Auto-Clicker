@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets
 from clicker import AutoClicker
 from tools import alreadyRunning
 from auto_clicker_UI import Ui_form
+from style import style
 
 alreadyRunning()
 
@@ -31,8 +32,7 @@ if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
-    with open("gui.css") as style:
-        app.setStyleSheet(style.read())
+    app.setStyleSheet(style())
     form = QtWidgets.QWidget()
     ui = ExtendedFormUI()
     ui.setupUi(form)

@@ -26,14 +26,10 @@ class AutoClicker:
 
     def startThreads(self):
         click_thread = self.Thread(
-            name="clickerThread",
-            target=self.clicker,
-            daemon=True
+            name="clickerThread", target=self.clicker, daemon=True
         )
         listener_thread = self.Thread(
-            name="listenerThread",
-            target=self.startListener,
-            daemon=True
+            name="listenerThread", target=self.startListener, daemon=True
         )
         click_thread.start()
         listener_thread.start()
