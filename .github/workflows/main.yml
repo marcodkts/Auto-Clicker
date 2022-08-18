@@ -13,7 +13,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     if: github.event.pull_request.merged == true
 
     # Steps represent a sequence of tasks that will be executed as part of the job
