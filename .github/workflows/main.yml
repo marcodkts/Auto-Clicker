@@ -35,7 +35,7 @@ jobs:
 
       - name: Run pyinstaller
         run: |
-          pyinstaller -F -n "${{ github.event.repository.name }}" main.*
+          pyinstaller -F -n "${{ github.event.repository.name }}" main.pyw
 
       - name: Upload file
         uses: xresloader/upload-to-github-release@v1
