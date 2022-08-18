@@ -37,7 +37,7 @@ jobs:
 
       - name: Run pyinstaller
         run: |
-          pyinstaller --onefile clicker.py
+          pyinstaller -F -n "Auto Clicker" clicker.py
 
       - name: Upload file
         uses: xresloader/upload-to-github-release@v1

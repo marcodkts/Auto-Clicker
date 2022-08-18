@@ -1,3 +1,4 @@
 # requirements libs
 pynput
 pyqt5
+psutil

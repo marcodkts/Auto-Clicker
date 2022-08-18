@@ -1,44 +1,41 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
+from PyQt5 import QtWidgets
+from clicker import AutoClicker
+from tools import alreadyRunning
+from auto_clicker_UI import Ui_form
 
-version = "1.0"
+alreadyRunning()
 
-
-class MyWindow(QMainWindow):
-    def __init__(self):
-        super(MyWindow, self).__init__()
-        self.setGeometry(200, 200, 400, 150)
-        self.setWindowTitle(f"WolfGear AutoClicker v{version}")
-        self.init_ui()
-
-    def init_ui(self):
-        # noinspection PyAttributeOutsideInit
-        self.label = QtWidgets.QLabel(self)
-        self.label.setText("Please set a Toggle Key")
-        self.label.move(10, 10)
-        self.label.adjustSize()
-
-        # noinspection PyAttributeOutsideInit
-        self.b1 = QtWidgets.QPushButton(self)
-        self.b1.setText("Save Toggle Key")
-        self.b1.adjustSize()
-        self.b1.move(50, 50)
-        self.b1.clicked.connect(self.clicked)
-
-    def clicked(self):
-        self.label.setText("Toggle Key Saved")
-        self.update()
-
-    def update(self):
-        self.label.adjustSize()
+version = "1.0.0"
+clicker = AutoClicker()
 
 
-def window():
-    app = QApplication(sys.argv)
-    win = MyWindow()
-    win.show()
+class ExtendedFormUI(Ui_form):
+    def initForm(self):
+        self.LblFooterBuild.setText(f"build v{version}")
+        self.BtnStart.clicked["bool"].connect(self.startClicker)
+        self.BtnSave.clicked["bool"].connect(self.saveClicker)
+
+    def startClicker(self, isPressed: bool) -> None:
+        self.BtnStart.setText("Stop" if isPressed else "Start")
+        if isPressed:
+            clicker.startClicker(self.LneToggleKey.text())
+        else:
+            clicker.stopClicker()
+
+    def saveClicker(self, isPressed: bool) -> None:
+        self.BtnSave.setText("Edit" if isPressed else "Save")
+
+
+if __name__ == "__main__":
+    import sys
+
+    app = QtWidgets.QApplication(sys.argv)
+    with open("gui.css") as style:
+        app.setStyleSheet(style.read())
+    form = QtWidgets.QWidget()
+    ui = ExtendedFormUI()
+    ui.setupUi(form)
+    form.show()
+    ui.initForm()
     sys.exit(app.exec_())
-
-
-window()
