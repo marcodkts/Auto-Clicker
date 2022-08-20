@@ -1,4 +1,3 @@
-import sys
 from PyQt5 import QtWidgets
 from clicker import AutoClicker
 from tools import alreadyRunning
